@@ -140,12 +140,18 @@ const Education = () => {
                     }),
                   }}
                 >
-                  <Box sx={{ display: 'flex', alignItems: 'center', mb: 2.5 }}>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      mb: 2,
+                    }}
+                  >
                     <Avatar
                       sx={{
-                        width: 52,
-                        height: 52,
-                        mr: 2,
+                        width: 50,
+                        height: 50,
                         border: '2px solid var(--border)',
                         bgcolor: 'var(--primary)',
                         color: '#fff',
@@ -153,28 +159,47 @@ const Education = () => {
                     >
                       {education.icon}
                     </Avatar>
-                    <Box>
-                      <Typography
-                        variant="h6"
+                    {education.tag && (
+                      <Box
                         sx={{
-                          fontWeight: 700,
-                          color: 'var(--text-primary)',
-                          lineHeight: 1.2,
-                          mb: 0.5,
-                        }}
-                      >
-                        {education.institution}
-                      </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{
-                          color: 'var(--primary)',
+                          backgroundColor: education.featured ? 'var(--primary)' : 'var(--bg-secondary)',
+                          color: education.featured ? 'white' : 'var(--text-secondary)',
+                          border: education.featured ? 'none' : '1px solid var(--border)',
+                          px: 1.25,
+                          py: 0.4,
+                          borderRadius: 'var(--border-radius-sm)',
+                          fontSize: '0.7rem',
                           fontWeight: 600,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.5px',
                         }}
                       >
-                        {education.degree}
-                      </Typography>
-                    </Box>
+                        {education.tag}
+                      </Box>
+                    )}
+                  </Box>
+
+                  <Box sx={{ mb: 2 }}>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 700,
+                        color: 'var(--text-primary)',
+                        lineHeight: 1.3,
+                        mb: 0.5,
+                      }}
+                    >
+                      {education.institution}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: 'var(--primary)',
+                        fontWeight: 600,
+                      }}
+                    >
+                      {education.degree}
+                    </Typography>
                   </Box>
 
                   <Box sx={{ display: 'flex', alignItems: 'center', mb: 2.5, gap: 2, flexWrap: 'wrap' }}>
@@ -228,28 +253,6 @@ const Education = () => {
                       />
                     ))}
                   </Box>
-
-                  {education.tag && (
-                    <Box
-                      sx={{
-                        position: 'absolute',
-                        top: 14,
-                        right: 14,
-                        backgroundColor: education.featured ? 'var(--primary)' : 'var(--bg-secondary)',
-                        color: education.featured ? 'white' : 'var(--text-secondary)',
-                        border: education.featured ? 'none' : '1px solid var(--border)',
-                        px: 1.2,
-                        py: 0.3,
-                        borderRadius: 'var(--border-radius-sm)',
-                        fontSize: '0.7rem',
-                        fontWeight: 600,
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.5px',
-                      }}
-                    >
-                      {education.tag}
-                    </Box>
-                  )}
                 </Paper>
               </motion.div>
             </Grid>
